@@ -1,0 +1,4 @@
+AppBundle\Entity\Product:
+    getters:
+        title:
+            - NotBlank:

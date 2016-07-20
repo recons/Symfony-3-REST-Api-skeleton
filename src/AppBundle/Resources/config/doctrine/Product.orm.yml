@@ -1,0 +1,36 @@
+AppBundle\Entity\Product:
+    type:  entity
+    table: products
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: products
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        category:
+            targetEntity: Category
+            inversedBy: products
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    manyToMany:
+        tags:
+            targetEntity: Tag
+            mappedBy: products
+            joinTable:
+                name: products_tags
+                joinColumns:
+                  product_id:
+                    referencedColumnName: id
+                inverseJoinColumns:
+                  tag_id:
+                    referencedColumnName: id
